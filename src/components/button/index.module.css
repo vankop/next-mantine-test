@@ -1,0 +1,77 @@
+.root {
+    --basic-text-strong: #1b1d22;
+    --basic-text-light: #ffffff;
+    --basic-text-weak: #949eb2;
+    --basic-background-strong: #1b1d22;
+    --functional-background-hoverLight: rgba(255, 255, 255, 0.12);
+    --functional-background-hoverStrong: rgba(27, 29, 34, 0.04);
+    --functional-background-activeStrong: rgba(27, 29, 34, 0.08);
+    --functional-background-activeLight: rgba(255, 255, 255, 0.16);
+    --feedback-background-good: #4de79d;
+    --feedback-text-good: #1bc579;
+    --basic-border-default: #dcdfe5;
+    --opacity-background-light-64: rgba(255, 255, 255, 0.64);
+    --functional-border-hover: #c2c7d0;
+}
+
+.root {
+    --button-radius: 12px;
+    transform: none !important;
+    transition:
+            background-color 150ms ease-out,
+            color 150ms ease-out;
+
+    position: relative;
+
+&:hover::after,
+&:active::after {
+     content: "";
+     display: block;
+     position: absolute;
+     border-radius: var(--button-radius);
+     z-index: 1;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+ }
+}
+
+.label {
+    font-variant-numeric: lining-nums tabular-nums;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.root[data-variant="default"],
+.root[data-variant="filled"] {
+&:hover::after {
+     background: var(--functional-background-hoverLight);
+ }
+
+&:active::after {
+     background: var(--functional-background-activeLight);
+ }
+}
+.root[data-variant="outline"] {
+    backdrop-filter: blur(8px);
+}
+
+.root[data-variant="outline"],
+.root[data-variant="light"],
+.root[data-variant="white"],
+.root[data-variant="subtle"] {
+&:hover::after {
+     background: var(--functional-background-hoverStrong);
+ }
+
+&:active::after {
+     background: var(--functional-background-activeStrong);
+ }
+}
+
+.root[data-variant="light"] .label,
+.root[data-variant="white"] .label,
+.root[data-variant="subtle"] .label {
+    font-weight: 400;
+}
